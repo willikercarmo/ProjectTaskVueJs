@@ -14,20 +14,25 @@
                 v-model="task"
               />
               <div class="input-group-append">
-                <button @click="addTask()"
-                class="btn btn-success btn-lg">Add</button>
+                <button @click="addTask()" class="btn btn-success btn-lg">
+                  Add
+                </button>
               </div>
             </div>
             <br />
-            
+            <h5 v-if="listTasks.length == 0">There are no task to do</h5>
+
             <ul class="list-group">
-              <li v-for="(task, index) of listTasks" :key="index"
-              class="list-group-item d-flex justify-content-between">
+              <li
+                v-for="(task, index) of listTasks"
+                :key="index"
+                class="list-group-item d-flex justify-content-between"
+              >
                 <span class="cursor">
                   <i class="far fa-circle"></i>
                 </span>
-                {{task.name}}
-                <span class="text-danger cursor">
+                {{ task.name }}
+                <span class="text-danger cursor" @click="removeTask(index)">
                   <i class="fas fa-trash-alt"></i>
                 </span>
               </li>
@@ -43,20 +48,23 @@
 export default {
   name: "Task",
   data() {
-      return {
-          task: '',
-          listTasks: []
-      }
+    return {
+      task: "",
+      listTasks: [],
+    };
   },
   methods: {
-      addTask(){
-          const task = {
-              name: this.task,
-              status: false
-          }
-          this.listTasks.push(task);
-          this.task = '';
-      }
+    addTask() {
+      const task = {
+        name: this.task,
+        status: false,
+      };
+      this.listTasks.push(task);
+      this.task = "";
+    },
+    removeTask(index) {
+      this.listTasks.splice(index, 1);
+    },
   },
 };
 </script>
