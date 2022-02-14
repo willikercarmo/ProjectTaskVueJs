@@ -21,6 +21,7 @@
             </div>
             <br />
             <h5 v-if="listTasks.length == 0">There are no task to do</h5>
+            {{ listTasks }}
 
             <ul class="list-group">
               <li
@@ -28,8 +29,9 @@
                 :key="index"
                 class="list-group-item d-flex justify-content-between"
               >
-                <span class="cursor">
-                  <i class="far fa-circle"></i>
+                <span class="cursor" v-bind:class="{'text-success': task.status}"
+                @click="editTask(task, index)">
+                  <i v-bind:class="[task.status ? 'fa-solid fa-circle-check' : 'fa-regular fa-circle']" ></i>
                 </span>
                 {{ task.name }}
                 <span class="text-danger cursor" @click="removeTask(index)">
@@ -64,6 +66,9 @@ export default {
     },
     removeTask(index) {
       this.listTasks.splice(index, 1);
+    },
+    editTask(task, index) {
+      this.listTasks[index].status = !task.status;
     },
   },
 };
