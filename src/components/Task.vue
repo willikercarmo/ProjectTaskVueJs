@@ -21,7 +21,6 @@
             </div>
             <br />
             <h5 v-if="listTasks.length == 0">There are no task to do</h5>
-            {{ listTasks }}
 
             <ul class="list-group">
               <li
