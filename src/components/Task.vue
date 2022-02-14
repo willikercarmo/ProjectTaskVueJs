@@ -12,6 +12,18 @@
                       <button class="btn btn-success btn-lg">Add</button>
                   </div>
               </div>
+              <br>
+              <ul class="list-group">
+                  <li class="list-group-item d-flex justify-content-between">
+                      <span class="cursor">
+                          <i class="far fa-circle"></i>
+                      </span>
+                      To do the task
+                      <span class="text-danger cursor">
+                          <i class="fas fa-trash-alt"></i>
+                      </span>
+                  </li>
+              </ul>
           </div>
         </div>
       </div>
@@ -25,4 +37,8 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.cursor{
+    cursor: pointer;
+}
+</style>
